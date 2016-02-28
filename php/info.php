@@ -1,7 +1,7 @@
 <?php 
 	
 	
-	
+
 	// phpinfo();
 
 	// $a = 1;
@@ -26,12 +26,19 @@
 	// var_dump($fruits);
 	// echo "</pre>";
 
-
-	// echo "<h1>";
-	// echo "Hello";
-	// echo "</h1>";
-
 	// echo "<h1>Hello</h1>";
 
 	// echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam ducimus ad optio!</p>";
+
+
+	$heading = "Lorem ipsum dolor sit.";
+	$paragraph = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam laboriosam maxime nostrum!";
+
+
+
+	// echo $heading, $paragraph;
+	// echo "<h1> $heading </h1>", "<p> $paragraph </p>";
+
+	echo "<h1>", $heading, "</h1>", "<p>", $paragraph, "</p>";
+
 ?>
