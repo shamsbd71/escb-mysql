@@ -1,7 +1,8 @@
 <?php 
-include_once "conn.php"; 
+include "conn.php"; 
 $sql = "SELECT * FROM `category`";
 $result = $conn->query($sql);
+// echo $result->num_rows;die;
 ?>
 
 <!DOCTYPE html>
