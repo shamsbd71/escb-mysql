@@ -58,8 +58,8 @@ if(isset($_POST)){
     <?php if(isset($name)): ?>
       <p>Your category info is: </p>
       <ul>
-        <li>Name : <?php echo $name; ?></li>
-        <li>Description : <?php echo $description; ?></li>
+        <li>Name : <strong><?php echo $name; ?></strong></li>
+        <li>Description : <strong><?php echo $description; ?></strong></li>
       </ul>
     <?php endif; ?> 
     <form role="form" method="post" style="width: 500px;">
