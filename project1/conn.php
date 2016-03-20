@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "mysql";
-$db = 'ieb_mysql_p1';
+$password = "";
+$db = 'ieb_mysql1';
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
 

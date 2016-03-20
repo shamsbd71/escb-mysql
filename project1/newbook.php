@@ -1,8 +1,14 @@
 <?php
-$msg = '';
-if(isset($_POST)){
-  include "conn.php"; 
+include "conn.php"; 
+$sql = "SELECT * FROM `category`";
+$category = $conn->query($sql);
 
+$sql = "SELECT * FROM `author`";
+$author = $conn->query($sql);
+
+$msg = '';
+if(isset($_POST['name'])){
+  print_r($_POST);die;
   $name = $_POST['name'];
   $description = $_POST['description'];
 
@@ -69,23 +75,47 @@ if(isset($_POST)){
       </div>
     </nav>
   <div class="container">
-    <h1>New category</h1>
+    <h1>New Book</h1>
     <?php if(!empty($msg)){ ?>
       <div class="alert alert-info">
         <?php echo $msg; ?>
       </div>
     <?php  } ?>
-    <?php if(isset($name)): ?>
-      <p>Your category info is: </p>
-      <ul>
-        <li>Name : <strong><?php echo $name; ?></strong></li>
-        <li>Description : <strong><?php echo $description; ?></strong></li>
-      </ul>
-    <?php endif; ?> 
+
     <form role="form" method="post" style="width: 500px;">
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" class="form-control" id="name" name="name" required="" />
+        </div>
+        <div class="form-group">
+          <label for="name">Category:</label>
+          <select class="form-control" name="cid">
+          <?php 
+            while ( $row = $category->fetch_assoc() ) {
+echo '<option></option>';          
+echo '<option value="id">Label</option>';
+echo '<option value="'.'"></option>';          
+echo '<option value="'. $row['id'] .'">' . $row['name'] . '</option>';          
+echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+          }
+           ?>
+          </select>
+          
+        </div>
+        <div class="form-group">
+          <label for="name">Author:</label>
+          <select class="form-control" name="aid">
+          <?php 
+            while ( $row = $author->fetch_assoc() ) {
+            echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+          }
+           ?>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Intro:</label>
+          <textarea id="description" class="form-control" rows="3" name="intro"></textarea>
         </div>
         <div class="form-group">
           <label for="description">Description:</label>
