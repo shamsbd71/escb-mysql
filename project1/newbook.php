@@ -8,7 +8,7 @@ $author = $conn->query($sql);
 
 $msg = '';
 if(isset($_POST['name'])){
-  print_r($_POST);die;
+  // print_r($_POST);die;
   $name = $_POST['name'];
   $description = $_POST['description'];
 

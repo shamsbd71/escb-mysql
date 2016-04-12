@@ -1,3 +1,15 @@
+<?php 
+include_once 'conn.php';
+
+$sql = "SELECT `b`.*, `a`.`name` as `authorname`, `c`.`name` as `cat_name`";
+$sql .= " FROM `book` as `b`";
+$sql .= " LEFT JOIN `author` as `a` ON `b`.`aid` = `a`.`id`";
+$sql .= " LEFT JOIN `category` as `c` ON `b`.`cid` = `c`.`id`";
+$sql .= " ORDER BY `b`.`id` ASC";
+
+$result = $conn->query($sql);
+// echo $result->num_rows;die;
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,6 +61,31 @@
     </nav>
 	<div class="container">
 		<h1>Welcome to Library</h1>
+    
+    <?php if($result->num_rows > 0): ?>
+      
+      <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th width="30%">Name</th>
+                <th>Category</th>
+                <th>Author</th>
+                <th>Intro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php 
+          while ( $row = $result->fetch_assoc() ) {
+            echo "<tr><td>".$row['id']."</td><td>".$row['name']."</td><td>".$row['cat_name']."</td>
+            <td>".$row['authorname']."</td><td>".$row['intro']."</td></tr>";
+          }
+               ?>
+              
+            </tbody>
+          </table>
+
+    <?php endif; ?>
 
 
 	</div><!-- /.container -->
